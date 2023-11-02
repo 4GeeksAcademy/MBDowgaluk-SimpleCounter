@@ -17,6 +17,7 @@ const SecondsCounter = (props) =>{
             <div className="two">{props.digitTwo % 10}</div>
             <div className="one">{props.digitOne % 10}</div>
             <div>,</div>
+            <div className="decimal">{props.digitDecimal % 10}</div>
         </div>
     )
 }
@@ -26,18 +27,20 @@ SecondsCounter.PropTypes = {
     digitThree: PropTypes.number,
     digitFour: PropTypes.number,
     digitFive: PropTypes.number,
+    digitDecimal: PropTypes.number,
 }
 
 let counter = 0;
 setInterval(function(){
-    const five = Math.floor(counter/10000);
-    const four = Math.floor(counter/1000);
-    const three = Math.floor(counter/100);
-    const two = Math.floor(counter/10);
-    const one = Math.floor(counter/1);
+    const five = Math.floor(counter/100000);
+    const four = Math.floor(counter/10000);
+    const three = Math.floor(counter/1000);
+    const two = Math.floor(counter/100);
+    const one = Math.floor(counter/10);
+    const decimal = Math.floor(counter/1);
     counter ++;
 
-    ReactDOM.render(<SecondsCounter digitOne={one} digitTwo={two} digitThree={three} digitFour={four} digitFive={five} />, document.querySelector("#app"));
-},1000)
+    ReactDOM.render(<SecondsCounter digitOne={one} digitTwo={two} digitThree={three} digitFour={four} digitFive={five} digitDecimal={decimal} />, document.querySelector("#app"));
+},100)
 
 
